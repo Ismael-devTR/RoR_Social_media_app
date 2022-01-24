@@ -20,5 +20,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
+  belongs_to :thread, class_name: "Post", optional: true
+  belongs_to :user
   belongs_to :postable, polymorphic: true
+  has_many :pictures
 end

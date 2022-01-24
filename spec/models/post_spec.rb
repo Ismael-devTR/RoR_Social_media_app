@@ -22,5 +22,27 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#save' do 
+
+    it 'belongs to a user' do 
+      user = User.create!(
+        first_name: "user",
+        username: "asdf122",
+        email: "adam@example.com"
+      )
+
+      post = Post.new(
+        postable: Status.new(text: "Wohoo!")
+      )
+
+      post.save
+      expect(post).not_to be_persisted
+
+      post.user = user
+      post.save
+      expect(post).to be_persisted
+
+
+    end
+  end
 end
