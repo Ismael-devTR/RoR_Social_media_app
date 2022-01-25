@@ -53,6 +53,6 @@ class User < ApplicationRecord
 	private
 
 	def check_name
-		self.first_name = first_name.capitalize!
+		self.first_name = first_name.capitalize
 	end
 end
